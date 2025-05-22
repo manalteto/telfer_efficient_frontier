@@ -17,11 +17,38 @@ from pypfopt import risk_models, expected_returns
 
 conn = wrds.Connection()
 
-# Define stock tickers
+#Ticker symbols for the stocks
+
 ticker_symbols = [
-    'ZIN', 'KKR', 'VGT', 'MSFT', 'BLK', 'XFN', 'MCK', 'PLC', 'V', 'FENY',
-    'MNST', 'CIGI', 'TOI', 'TTWO', 'JNJ', 'MFC', 'XMA', 'VCR', 'BEP.UN', 'DD',
-    'TPZ', 'BNS', 'SU', 'DOW', 'IYZ', 'PINS', 'CTVA', 'FTS', 'BEPC'
+    'ZIN',   # BMO Equal Weight Industrials Index ETF
+    'KKR',      # KKR & Co. Inc.
+    'VGT',      # Vanguard World Fund - Vanguard Information Technology ETF
+    'MSFT',     # Microsoft Corporation
+    'BLK' ,     # BlackRock, Inc.
+    'XFN',      #iShares S&P/TSX Capped Financials Index ETF
+    'MCK',      #McKesson Corporation
+    'PLC',      #Park Lawn Corporation
+    'V',        #Visa Inc.
+    'FENY',     #Fidelity Covington Trust - Fidelity MSCI Energy Index ETF
+    'MNST',     #Monster Beverage Corporation
+    'CIGI',     #Colliers International Group Inc.
+    'TOI',      #Topicus.com Inc.
+    'TTWO',     #Take-Two Interactive Software, Inc.
+    'JNJ',      #Johnson & Johnson
+    'MFC',      #Manulife Financial Corporation
+    'XMA',      #iShares S&P/TSX Capped Materials Index ETF
+    'VCR',      #Vanguard World Fund - Vanguard Consumer Discretionary ETF
+    'BEP.UN',   #Brookfield Renewable Partners L.P.
+    'DD',       #DuPont de Nemours, Inc.
+    'TPZ',      #Topaz Energy Corp.
+    'BNS',      #The Bank of Nova Scotia
+    'SU',       #Suncor Energy Inc.
+    'DOW',      #Dow Inc.
+    'IYZ',      #iShares Trust - iShares U.S. Telecommunications ETF
+    'PINS',     #Pinterest, Inc.
+    'CTVA',     #Corteva, Inc.
+    'FTS',      #Fortis Inc.
+    'BEPC',     #Brookfield Renewable Corporation
 ]
 
 ticker_string = "','".join(ticker_symbols)
@@ -97,6 +124,15 @@ def efficient_frontier(mu, S, returns_range):
 
 returns_range = np.linspace(mu.min(), mu.max(), 50)
 efficients = efficient_frontier(mu, S, returns_range)
+
+
+#Plot of the efficient frontier
+plt.figure(figsize=(10, 6))
+plt.scatter([p['fun'] for p in efficients], returns_range, marker='x', color='red', s=100)
+plt.title('Efficient Frontier of Telfer Capital Fund’s Stocks')
+plt.xlabel('Volatility')
+plt.ylabel('Expected returns')
+plt.show()
 
 # ------------------------------------------------------
 # 5. Check if equal-weighted portfolio is on the frontier
