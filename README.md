@@ -20,5 +20,3 @@ This project uses **WRDS** data and the **PyPortfolioOpt** library to evaluate w
   - Optimal and examined portfolios
   - Efficient frontier
 
-### Purpose:
-This assignment was completed as part of an **Investment and Portfolio Management** course at the University of Ottawa, analyzing a Telfer Capital Fund-like portfolio using real data and modern portfolio theory.
